@@ -1,0 +1,36 @@
+
+
+bool isPrime(int num) {
+    if (num <= 1) {
+        return false;
+    }
+
+    for (int i = 2; i * i <= num; i++) {
+        if (num % i == 0) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+int minimumPotatoesForProfit(int x, int y) {
+    int totalPotatoes = x + y;
+    int potatoesFromThirdField = 1;
+
+    while (!isPrime(totalPotatoes + potatoesFromThirdField)) {
+        potatoesFromThirdField++;
+    }
+
+    return potatoesFromThirdField;
+}
+
+int main() {
+  
+    int x = 4, y = 3;
+    int minPotatoes = minimumPotatoesForProfit(x, y);
+
+    cout << "Minimum number of potatoes to be harvested from the third field: " << minPotatoes << endl;
+
+    return 0;
+}
